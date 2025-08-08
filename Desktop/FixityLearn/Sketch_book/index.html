@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SketchBook</title>
+    <link rel="icon" href="sb_icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="Container-fluid">
+    <header>
+        <h1>SketchBook</h1>
+        <nav class="sketchTool d-inline-flex p-2">
+        <button id="rectangle" class="shapeBtn" ><i class="bi bi-square"></i></button>
+        <button id="circle" class="shapeBtn"><i class="bi bi-circle"></i></button>
+        <button id="triangle" class="shapeBtn"><i class="bi bi-triangle"></i></button>
+        <button id="pencil" class="shapeBtn" ><i class="bi bi-pencil"></i></button>
+        <button id="fonts" class="shapeBtn"><i class="bi bi-fonts"></i></button>
+        <button id="eraser" class="shapeBtn" ><i class="bi bi-eraser"></i></button>
+
+        <input type="color" id="colorPicker">
+        <input type="range" id="sizeSlider" min="1" max="50" value="5"> 
+
+        <button id="clearCanvas" class="shapeBtn">Clear</button>
+        </nav>
+    </header>
+
+        <canvas id="canvas" ></canvas>
+    </div>
+ <script src="script.js"></script>
+
+</body>
+</html>
