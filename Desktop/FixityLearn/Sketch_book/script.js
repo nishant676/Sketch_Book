@@ -89,6 +89,16 @@ ctx.strokeStyle = strokeColor;
 	ctx.lineTo(e.offsetX,e.offsetY);
     ctx.stroke();
     }
+    else if (selectedTool === "fonts") {
+    const text = prompt("Enter the text:");
+    if (text) {
+        ctx.fillStyle = strokeColor;
+        ctx.font = (brushWidth * 5)+"px serif";
+        ctx.fillText(text, e.offsetX, e.offsetY);
+    }
+    isDrawing = false; 
+}
+
 };
 
 sizeSlider.addEventListener("change", () => {
