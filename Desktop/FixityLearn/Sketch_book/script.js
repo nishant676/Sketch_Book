@@ -4,6 +4,7 @@ const tools = document.querySelectorAll(".shapeBtn");
 const clearCanvas = document.getElementById("clearCanvas");
 const colorPicker = document.querySelector("#colorPicker");
 const  sizeSlider = document.querySelector("#sizeSlider");
+const saveImg = document.getElementById("saveImg");
 
 let prevMouseX,
 prevMouseY,
@@ -111,6 +112,14 @@ colorPicker.addEventListener("change", () => {
 // clear Screen
 clearCanvas.addEventListener("click",()=>{
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+// save Img
+saveImg.addEventListener("click", () => {
+    const link = document.createElement("a");
+    link.download = `Drawing.jpg`;
+    link.href = canvas.toDataURL();
+    link.click();
 });
 
 canvas.addEventListener("mousedown",startDraw);
