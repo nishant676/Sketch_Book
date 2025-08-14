@@ -5,6 +5,7 @@ const clearCanvas = document.getElementById("clearCanvas");
 const colorPicker = document.querySelector("#colorPicker");
 const  sizeSlider = document.querySelector("#sizeSlider");
 const saveImg = document.getElementById("saveImg");
+const fill = document.querySelector("#fillColor");
 
 let prevMouseX,
 prevMouseY,
@@ -22,7 +23,12 @@ window.addEventListener("load",()=>{
 
 // for Rectangle
 const drawRectangle = (e)=>{
-    ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetY);
+    if(!fill.checked){
+        return ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetY);
+    }
+    else{ctx.fillStyle = colorPicker.value; 
+    ctx.fillRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetY);
+    }
 }
 
 // Circle
@@ -31,7 +37,7 @@ const drawCircle = (e) => {
   let radius = Math.sqrt(
   Math.pow(prevMouseX - e.offsetX, 2) + Math.pow(prevMouseY - e.offsetY, 2)  );
   ctx.arc(prevMouseX, prevMouseY, radius, 0, 2 * Math.PI);
-  ctx.stroke();
+fill.checked ? ctx.fill() : ctx.stroke();
 };
 
 // for triangle
@@ -41,7 +47,8 @@ const drawTriangle = (e) => {
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.lineTo(2 * prevMouseX - e.offsetX, e.offsetY);
   ctx.closePath();
-   ctx.stroke();
+  fill.checked ? ctx.fill() : ctx.stroke();
+
 };
 
 const startDraw = (e) => {
@@ -50,6 +57,8 @@ const startDraw = (e) => {
   prevMouseY = e.offsetY;
   ctx.beginPath();
   ctx.lineWidth = brushWidth;
+   ctx.strokeStyle = colorPicker.value; 
+  ctx.fillStyle = colorPicker.value;
 snapshot = ctx.getImageData(0,0, canvas.width, canvas.height);
 };
 
@@ -121,7 +130,6 @@ saveImg.addEventListener("click", () => {
     link.href = canvas.toDataURL();
     link.click();
 });
-
 canvas.addEventListener("mousedown",startDraw);
 canvas.addEventListener("mousemove",drawing);
 canvas.addEventListener("mouseup",()=>{

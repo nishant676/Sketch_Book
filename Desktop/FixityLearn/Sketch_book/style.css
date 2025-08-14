@@ -55,3 +55,10 @@ input{
     display: block;
 }
 
+.fillBox{
+    align-items: center;
+    margin-top: 17px;
+    font-size: 20px;
+    font-weight: 100;
+}
+
